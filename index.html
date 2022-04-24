@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8"/>
+   
+   <link rel="stylesheet" type="text/css" href="styles/goll.css">
+   <link id="colorcss" rel="stylesheet" type="text/css" href="styles/goll-black.css">
+   <!-- load the lovely sentences -->
+   <script src="js/text.js"></script>
+
+   <!-- game settings-->
+   <script src="js/settings.js"></script>
+
+
+   <!-- index cards and metadata -->
+   <script src="archive/metadata/metadata-en.js"></script>
+   <script src="js/archive.js"></script>
+   
+   <!-- game logics -->
+   <script src="js/goll.js" async></script>
+
+   <!-- the plugin that displays the index cards-->
+   <link href="lightgallery/lightgallery.css" rel="stylesheet">
+   <script src="lightgallery/lightgallery.js"></script>
+
+   <title>Hammer Pairs</title>
+
+   <!-- favicons -->
+   <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+   <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+   <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+   <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+   <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+   <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+   <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+   <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+   <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+   <link rel="manifest" href="site.manifest.json">
+   <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+   <meta name="msapplication-TileColor" content="#ffffff">
+   <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+   <meta name="msapplication-TileColor" content="#da532c">
+   <meta name="theme-color" content="#ffffff">
+   <meta name="description" content="Concentration Game, Card Game, Memory Card Game, Pairs Card Game, Pairs, Memory, Heinz Kirchhoff, Hammer Pairs, Hammer Pairs">
+   <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+   <meta property="og:title" content="Hammer Pairs"/>
+   <meta property="og:type" content="website"/>
+   <meta property="og:url" content="https://collectivepairs.de"/>
+   <meta property="og:image" content="assets/logo.png"/>
+   <meta property="og:audio" content="assets/intro.mp3"/>
+   <meta property="og:description" content="Stadtarchäologie Gifhorn"/>
+   <meta property="og:video" content="assets/goll-black.webm"/>
+</head>
+<body>
+
+    <div class="hidden">
+        <section itemscope itemtype="http://schema.org/Game">
+            <h2>Hammer Pairs</h2>
+            <span itemprop="audience" itemscope itemtype="http://schema.org/PeopleAudience">
+             <span itemprop="suggestMinAge">5</span>
+            </span>
+            <p itemprop="name">Hammer Pairs</p>
+            <img src="assets/gollpairs.png" itemprop="thumbnailUrl" alt="two characters rising up from two cards and kissing eachother">
+            <p itemprop="description">
+                Hammer Pairs is a card game in the context of Hammers.
+                All  the cards are laid face down on a surface and the player flips two cards at each turn. 
+                The objective of the game is to find matching pairs of cards.
+                Hammer Pairs connects the cards to the digital dataset from the Stadtarchäologie Gifhorn, creating common ground in a fun way.
+                Once played, the amazing artworks will remain in people's minds 
+                <span itemprop="gameboard"></span>
+                <span itemprop="numberOfPlayers" itemscope itemtype="http://schema.org/QuantitativeValue">
+                    <span itemprop="minValue">1</span>
+                    <span itemprop="maxValue">1</span>
+                </span>
+            </p>
+        </section>
+    </div>
+
+    <div id="main">
+        <h1 class="page-title is-action" onClick="onAboutClicked();">Hammer Pairs</h1>
+        
+        <div class="colorbar"> 
+            <ul class="color-select">
+                <li class="black circle" onclick="changeColor(0);">&nbsp;</li>
+                <li class="white circle" onclick="changeColor(1);">&nbsp;</li>
+                <li class="yellow circle" onclick="changeColor(2);">&nbsp;</li>
+                <li class="orange circle" onclick="changeColor(3);">&nbsp;</li>
+                <li class="pink circle" onclick="changeColor(4);">&nbsp;</li>
+                <li class="red circle" onclick="changeColor(5);">&nbsp;</li>
+                <li class="purple circle" onclick="changeColor(6);">&nbsp;</li>
+                <li class="blue circle" onclick="changeColor(7);">&nbsp;</li>
+                <li class="green circle" onclick="changeColor(8);">&nbsp;</li>
+                <li class="brown circle" onclick="changeColor(9);">&nbsp;</li>
+            </ul>
+        </div>
+
+        
+<!--
+    <div class="intro-video">
+    //TODO
+            <img src="assets/gollpairs-w.png" id="fallback" alt="your browser does not support this video format" class="hidden">
+            <video id="introvideo" width="720" height="512" autoplay muted playsinline class="introvideo video">
+                <source id="source" src="assets/goll-black.webm" type="video/ogv">
+            </video>
+            <script>
+                document.getElementById('introvideo').addEventListener('ended', function() { 
+                    document.getElementById("start").classList.add("blink");   
+                }, false);
+            </script>
+  </div>
+        -->
+        <!-- TODO -->
+        <div class="intro-video">
+            <img src="assets/logo-black.png" id="fallback" class="intrologo">
+        </div>
+      
+
+        <div class="audiobar">
+            <div class="left">
+                <span id="music1" class="button music-off sound-button tooltip" onclick="toggleMusic();">
+                    <span class="tooltiptext">Toggle Music</span>
+                </span>
+            </div>
+            <div class="right">
+                <span id="sound1" class="button sound-off sound-button tooltip" onclick="toggleSound();">
+                    <span class="tooltiptext">Toggle Sound</span>
+                </span>
+            </div>
+        </div>
+    
+        
+           <!-- <div class="left">
+                <div class="button is-action" onclick="onStoryClicked();">Story</div>
+            </div> 
+            -->
+            <div class="bottom center">
+                <div id="start" class="button is-action" onclick="onGameClicked();">Start</div>
+            </div>
+        
+
+        <div class="stat-scroller">
+            <p class="scroll-marquee">
+                <span id="stats">
+                    
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div id="about" class="hidden">
+        <div class="about-container">
+            <h1 class="page-title">About Hammer Pairs</h1>
+            <p id="about-pause" class="hint">(Click to Pause/Resume)</p>
+            <p class="marquee-about" id="about-story">
+               <span id="about-scroller">
+
+                    <br/>
+                    <br/>
+                    Hammer Pairs<br/>
+                    <br/>
+                    A card game <br/>
+                    
+                    <br/>
+                    <br/>
+
+                    Danke für diese Daten, die für Coding-Da-Vinci-Hackathon
+                    zur Verfügung gestellt wurden und in unser Spielvergnügen integriert sind. <br/>
+
+                    <br/>
+                    <br/>
+
+
+                    Gameplay by<br/>
+                    Niels Elburg and &nbsp;<a class="logolink" href="https://dorisahlgrimm.de/">Arianna Doris Ahlgrimm</a><br/>
+
+                    <br/>
+                    <br/>
+
+                    Special thanks to Coding Da Vinci 2022 Niedersachsen<br/>
+        
+                    <br/>
+                    Special thanks for sound go to<br/>
+                    <a class="logolink" href="https://freesound.org/people/f4ngy">f4ngy, for "Card Flip" and "Bridging Cards"</a><br/>
+                    <a class="logolink" href="https://freesound.org/people/qubodup">qubodup, for "Puzzle Error"</a><br/>
+                
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+               </span>
+            </p>
+         </div>
+    
+         <div class="bottom">
+            <ul>
+                <li><div class="button zapbutton is-action" onclick="onMainClicked();">Back</div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="gollstory" class="hidden">
+        <h1 class="page-title"></h1>
+        <p id="story-pause" class="hint">(Click to Pause/Resume)</p>
+        
+        <div class="story-container">
+
+            <p class="marquee" id="story">
+                <span class="text" id="scroller">
+                </span>
+            </p>
+        </div>
+    
+        <div class="bottom">
+            <ul>
+                <li><div class="button zapbutton is-action" onclick="onMainClicked();">Back</div></li>
+            </ul>
+        </div>
+   
+    </div>
+
+    <div id="game" class="hidden">
+
+        <h1 class="page-title">Hammer Pairs</h1>
+
+        <div id="wrapper" class="black">
+
+            <div id="metadata-container" class="metadata-container">
+                        
+            </div>
+    
+            <div class="congratulations hidden" id="you-won"></div> <!-- container for lovely sentences -->
+    
+            <div id="gallery" style="visibility: hidden;" >
+                <div id="lightgallery"></div> <!-- container for index cards -->
+            </div>
+    
+            <div class="colorbar colorbar-fade-in-out" id="settings-bar"> <!-- game settings bar -->
+                <ul class="color-select">
+                    <li class="black circle" onclick="changeColor(0);">&nbsp;</li>
+                    <li class="white circle" onclick="changeColor(1);">&nbsp;</li>
+                    <li class="yellow circle" onclick="changeColor(2);">&nbsp;</li>
+                    <li class="orange circle" onclick="changeColor(3);">&nbsp;</li>
+                    <li class="pink circle" onclick="changeColor(4);">&nbsp;</li>
+                    <li class="red circle" onclick="changeColor(5);">&nbsp;</li>
+                    <li class="purple circle" onclick="changeColor(6);">&nbsp;</li>
+                    <li class="blue circle" onclick="changeColor(7);">&nbsp;</li>
+                    <li class="green circle" onclick="changeColor(8);">&nbsp;</li>
+                    <li class="brown circle" onclick="changeColor(9);">&nbsp;</li>
+                    <li class="circle music-off circle-lightgrey" id="music2" onclick="toggleMusic();"></li>
+                    <li class="circle sound-off circle-lightgrey" id="sound2" onclick="toggleSound();"></li>
+            <!--    <li class="circle back circle-lightgrey is-action" onclick="onMainClicked();"></li> -->
+                </ul>
+            </div>
+    
+            <!-- game container -->
+            <div class="goll-container unselectable" id="board">
+    
+                <!-- status bar and walk-away/cheat buttons -->
+                <div class="goll-info-container" id="status">
+                    <div class="goll-info">
+                        Time: <span id="time-remaining">00:00:00</span>
+                        <div class="goll-action-right">
+                            <div id="skip-action" class="action-button tooltip">
+                                <div class="sneakers-icon"></div>
+                                <span class="tooltiptext">Walk away from this game</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goll-info">
+                        Best: <span id="highscore">0</span>
+                    </div>
+                    <div class="goll-info">
+                        Score: <span id="score">0</span>
+                        <div class="goll-action-center">
+                            <div id="cheat-action" class="action-button tooltip">
+                                <div class="cheat-icon"></div>
+                                <span class="tooltiptext">Glimpse at ... or Match a card</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goll-info">
+                        Moves: <span id="moves">0</span>
+                    </div>
+                
+                </div>
+            </div>
+
+            <div id="level" class="level hidden">
+                <span id="current-level">1</span>
+            </div>
+
+            <div id="quit" class="quit">
+                <div class="circle back circle-lightgrey is-action quit-button" onclick="onMainClicked();"></div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- load audio assets -->
+    <audio id="flip-card">
+        <source src="assets/card-flip.wav" type="audio/wav">
+    </audio>
+    <audio id="match-card">
+        <source src="assets/card-match.wav" type="audio/wav">
+    </audio>
+    <audio id="nomatch-card">
+        <source src="assets/card-nomatch.wav" type="audio/wav">
+    </audio>
+    <audio id="win-game">
+        <source src="assets/win-game.mp3" type="audio/mp3">
+    </audio>
+    <audio id="shuffle">
+        <source src="assets/shuffle.wav" type="audio/wav">
+    </audio>
+    <audio id="intro-music" loop>
+        <source src="assets/intro.mp3" type="audio/mp3">
+    </audio>
+    <audio id="skip-button">
+        <source src="assets/skip-button.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        initDefaults();
+        loadColor();
+        onMainClicked();
+      
+     /*   document.getElementById("story").addEventListener("click", function() {
+            document.getElementById("scroller").classList.toggle("paused");
+        });
+      */
+
+        document.getElementById("about-story").addEventListener("click", function() {
+            document.getElementById("about-scroller").classList.toggle("paused");
+        });
+    </script>
+    <!-- load lightgallery plugins -->
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+</body>
+</html>
